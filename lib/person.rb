@@ -44,8 +44,8 @@ class Person
       @happiness > 7
     end
 
-    def take_bath(hygiene)
-      @hygiene << self
+    def take_bath
+      self.hygiene += 4
       "Rub-a-dub just relaxing in the tub"
     end
     
