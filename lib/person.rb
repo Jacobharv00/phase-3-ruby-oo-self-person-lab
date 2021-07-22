@@ -12,12 +12,12 @@ class Person
     end
     
     def happiness(happy_points)
-      @happiness = if happy_points > 10 
-        10  
+      if happy_points > 10 
+        @happiness = 10  
       elsif  happy_points < 0 
-        0
+        @happiness = 0
       else 
-        happy_points
+        @happiness = happy_points
       end
     end
 
@@ -32,8 +32,8 @@ class Person
     end
 
     def get_money(amount)
-        self.bank_account += amount
-        "all about the benjamins"
+      bank_account += amount
+      "all about the benjamins"
     end
 
     def clean?
@@ -45,16 +45,40 @@ class Person
     end
 
     def take_bath
-      self.hygiene += 4
+      hygiene += 4
       "Rub-a-dub just relaxing in the tub"
     end
-    
-    
-  end
+
+    def word_out
+      hygiene -= 3
+      happiness += 2
+      "another one bites the dust"
+    end
+
+    def call_friend(friend)
+      self.happiness += 3
+      friend.happiness += 3 
+      "Hi #{friend.name}! It's #{self.name}. How are you?"
+    end
+
+    def start_conversation(friend, topic)
+      if topic.downcase.include?('politics')
+      self.happiness -= 1
+      friend.happiness -= 1
+      "blah blah partisan blah lobbyist"
+      elsif topic.downcase.include?('weather')
+        self.happiness += 1
+        friend.happiness += 1
+        "blah blah sun blah rain"
+      else
+        "blah blah blah blah"
+      end
+    end
+end
   
-  ivan = Person.new("Ivan")
-  ivan.get_money(50)
-  ivan.happiness(8)
+  # ivan = Person.new("Ivan")
+  # ivan.get_money(50)
+  # ivan.happiness(8)
   
 
 
